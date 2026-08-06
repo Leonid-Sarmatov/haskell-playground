@@ -20,7 +20,7 @@ name:               haskell-playground
 -- PVP summary:     +-+------- breaking API changes
 --                  | | +----- non-breaking API additions
 --                  | | | +--- code changes with no API change
-version:            0.1.0.2
+version:            0.1.0.3
 
 -- A short (one-line) description of the package.
 -- synopsis:
@@ -52,16 +52,24 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -ddump-ds
+
+common prof-and-bench
+    ghc-options: -rtsopts
+
+common flags-for-list-vs-vector-bench-test
+    ghc-options: -Wall -O2 -fllvm -optlo-O3 -ddump-asm -ddump-to-file -optlo=-pass-remarks=loop-vectorize -optlo=-pass-remarks-missed=loop-vectorize
 
 library
     -- Import common warning flags.
     import:           warnings
+    import:           flags-for-list-vs-vector-bench-test
 
     -- Modules exported by the library.
     exposed-modules:
         RbTree,
-        UpsertTask
+        UpsertTask,
+        ListVectorPerformanceTest
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -70,7 +78,12 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base
+    build-depends:    
+        base,
+        vector,
+        accelerate,
+        accelerate-llvm-native,
+        tasty-bench
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -81,6 +94,7 @@ library
 executable haskell-playground
     -- Import common warning flags.
     import:           warnings
+    import:           prof-and-bench
 
     -- .hs or .lhs file containing the Main module.
     main-is:          Main.hs
