@@ -69,7 +69,9 @@ library
     exposed-modules:
         RbTree,
         UpsertTask,
-        ListVectorPerformanceTest
+        ListVectorPerformanceTest,
+        VectorTree,
+        MonadTransformers
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -83,6 +85,8 @@ library
         vector,
         accelerate,
         accelerate-llvm-native,
+        transformers,
+        mtl,
         tasty-bench
 
     -- Directories containing source files.
