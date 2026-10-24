@@ -7,10 +7,10 @@ module Main (main) where
 -- import ListVectorPerformanceTest
 
 -- Задача с деревьями на базе векторов
--- import VectorTree
+import VectorTree
 
--- Задачи с монадическими трансформерами
-import MonadTransformers
+-- -- Задачи с монадическими трансформерами
+-- import MonadTransformers
 
 main :: IO ()
 main = do
@@ -26,11 +26,11 @@ main = do
       -- -- Задача с замерами производительности списка и вектора
       -- runBenchmark
 
-      -- -- Задача с деревьями на базе векторов
-      -- vecTreeDemoExample
+      -- Задача с деревьями на базе векторов
+      vecTreeDemoExample
 
-      -- Серия задач на монадические трансформеры
-      incrementDemoExample1
-      incrementDemoExample2
-      playerDemoExample1
-      playerDemoExample2
+      -- -- Серия задач на монадические трансформеры
+      -- incrementDemoExample1
+      -- incrementDemoExample2
+      -- playerDemoExample1
+      -- playerDemoExample2
