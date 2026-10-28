@@ -6,11 +6,13 @@ module Main (main) where
 -- -- Задача с замерами производительности списка и вектора
 -- import ListVectorPerformanceTest
 
--- Задача с деревьями на базе векторов
-import VectorTree
+-- -- Задача с деревьями на базе векторов
+-- import VectorTree
 
 -- -- Задачи с монадическими трансформерами
 -- import MonadTransformers
+
+import AsciiSum
 
 main :: IO ()
 main = do
@@ -26,11 +28,14 @@ main = do
       -- -- Задача с замерами производительности списка и вектора
       -- runBenchmark
 
-      -- Задача с деревьями на базе векторов
-      vecTreeDemoExample
+      -- -- Задача с деревьями на базе векторов
+      -- vecTreeDemoExample
 
       -- -- Серия задач на монадические трансформеры
       -- incrementDemoExample1
       -- incrementDemoExample2
       -- playerDemoExample1
       -- playerDemoExample2
+
+      -- Задача на сумму разности ASCII кодов
+      asciiSumDemoExample
